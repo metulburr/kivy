@@ -1,20 +1,34 @@
 
 from kivy.app import App
-from kivy.uix.label import Label
-from kivy.uix.scatter import Scatter
-from kivy.uix.floatlayout import FloatLayout
 
-class Control(App):
+from kivy.uix.scatter import Scatter
+from kivy.uix.label import Label
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.textinput import TextInput
+from kivy.uix.boxlayout import BoxLayout
+
+class Application(App):
     def build(self):
+        default = 'monkey'
+        b = BoxLayout(orientation='vertical')
+        t = TextInput(font_size=150,
+                      size_hint_y=None,
+                      height=200,
+                      text=default)
+
         f = FloatLayout()
         s = Scatter()
-        l = Label(
-            text="Micah",
-            font_size=150
-        )
+        l = Label(text=default,
+                  font_size=150)
+
+        t.bind(text=l.setter('text'))
+
         f.add_widget(s)
         s.add_widget(l)
-        return f
 
-if __name__ == '__main__':
-    Control().run()
+        b.add_widget(t)
+        b.add_widget(f)
+        return b
+
+if __name__ == "__main__":
+    Application().run()
