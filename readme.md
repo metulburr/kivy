@@ -20,7 +20,10 @@ Last cmd can take a long time to install SDK, NDK, etc. -verbose to buildozer to
 
 
 ##### Testing APK file on PC
+download 
+http://kivy.org/#download
+and execute
 ```
-sudo apt-get install python-kivy
+sudo python setup.py install
 python main.py
 ```
